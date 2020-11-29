@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane fx:id="apAddNewBuilding" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="180.0" minWidth="375.0"
+            prefHeight="300.0" prefWidth="375.0" style="-fx-background-color: #d7d7d7;"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.building.BuildingAddNewController">
+    <children>
+        <Button fx:id="btnOk" layoutX="199.0" layoutY="275.0" maxHeight="25.0" maxWidth="75.0" minHeight="25.0"
+                minWidth="75.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="OK"
+                AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="110.0"/>
+        <Button fx:id="btnCancel" layoutX="344.0" layoutY="269.0" maxHeight="25.0" maxWidth="75.0" minHeight="25.0"
+                minWidth="75.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Cancel"
+                AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0"/>
+        <TextField fx:id="tfBuildingNo" layoutX="34.0" layoutY="21.0" prefHeight="25.0" prefWidth="259.0"
+                   promptText="BuildingNo" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0"
+                   AnchorPane.topAnchor="15.0"/>
+        <TextField fx:id="tfStreet" layoutX="112.0" layoutY="131.0" prefHeight="25.0" prefWidth="259.0"
+                   promptText="Street" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0"
+                   AnchorPane.topAnchor="55.0"/>
+        <TextField fx:id="tfCity" layoutX="116.0" layoutY="90.0" prefHeight="25.0" prefWidth="259.0"
+                   promptText="City" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0"
+                   AnchorPane.topAnchor="95.0"/>
+        <TextField fx:id="tfState" layoutX="116.0" layoutY="90.0" prefHeight="25.0" prefWidth="259.0"
+                   promptText="tfState" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0"
+                   AnchorPane.topAnchor="135.0"/>
+        <TextField fx:id="tfZipcode" layoutX="116.0" layoutY="90.0" prefHeight="25.0" prefWidth="259.0"
+                   promptText="Zipcode" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0"
+                   AnchorPane.topAnchor="175.0"/>
+        <TextField fx:id="tfPhone" layoutX="116.0" layoutY="90.0" prefHeight="25.0" prefWidth="259.0"
+                   promptText="Phone" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0"
+                   AnchorPane.topAnchor="215.0"/>
+        <TextField fx:id="tfEmpNo" maxHeight="25.0" maxWidth="120.0" minHeight="25.0" minWidth="120.0"
+                   prefHeight="25.0" prefWidth="120.0" promptText="EmpNo" AnchorPane.bottomAnchor="15.0"
+                   AnchorPane.leftAnchor="15.0"/>
+    </children>
+</AnchorPane>

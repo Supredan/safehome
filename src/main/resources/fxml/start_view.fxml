@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane minHeight="525.0" minWidth="865.0" prefHeight="525.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StartController">
+    <children>
+        <TabPane tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
+            <tabs>
+                <Tab  text="Building">
+                    <content>
+                        <fx:include source="building/building.fxml"/>
+                    </content>
+                </Tab>
+                <Tab  text="Apartment">
+                    <content>
+                        <fx:include source="apartment/apartment.fxml"/>
+                    </content>
+                </Tab>
+<!--                <Tab  text="Lease">-->
+<!--                    <content>-->
+<!--                        <fx:include source="building/building.fxml"/>-->
+<!--                    </content>-->
+<!--                </Tab>-->
+                <Tab text="Client">
+                    <content>
+                        <fx:include source="client/client.fxml"/>
+                    </content>
+                </Tab>
+                <Tab  text="Employee">
+                    <content>
+                        <fx:include source="employee/employee.fxml"/>
+                    </content>
+                </Tab>
+<!--                <Tab  text="Payment">-->
+<!--                    <content>-->
+<!--                        <fx:include source="building/building.fxml"/>-->
+<!--                    </content>-->
+<!--                </Tab>-->
+                <Tab  text="Maintenance">
+                    <content>
+                        <fx:include source="maintenance/maintenance.fxml"/>
+                    </content>
+                </Tab>
+            </tabs>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </TabPane>
+    </children>
+</AnchorPane>
