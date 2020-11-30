@@ -25,7 +25,7 @@ public class MaintenanceController extends BaseTableController<Maintenance> impl
     @FXML
     private TableColumn<Maintenance, String> tfMaintenanceNo, tfProblemDescription, tfStartDate, tfResolutionDate, tfApartmentNo, tfType, tfBuildingExpense, tfResolution, tfTenantExpense;
     @FXML
-    private Button btnDeleteMaintenance, btnEditMaintenance, btnAddNewMaintenance;
+    private Button btnDeleteMaintenance, btnEditMaintenance, btnAddNewMaintenance, btnReportUndo;
 
     @Override
     public TableView<Maintenance> getTableView() {
@@ -101,6 +101,10 @@ public class MaintenanceController extends BaseTableController<Maintenance> impl
 
         btnAddNewMaintenance.setOnAction(event -> {
             ViewUtil.showView(UiConstants.Path.MAINTENANCE_ADD_NEW_PATH, UiConstants.Tittle.MAINTENANCE_ADD_NEW_TITTLE, false);
+        });
+
+        btnReportUndo.setOnAction(event -> {
+            ViewUtil.showView(UiConstants.Path.REPORT_UNDO_PATH, UiConstants.Tittle.REPORT_UNDO_TITTLE, false);
         });
     }
 }

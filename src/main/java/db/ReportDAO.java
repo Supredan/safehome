@@ -1,6 +1,9 @@
 package db;
 
+import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
 import model.Building;
+import model.Maintenance;
 import service.ConnectionService;
 import utils.converter.ResultSetConverter;
 
@@ -8,8 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class ReportDAO {
 
@@ -82,19 +86,6 @@ public class ReportDAO {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             building = ResultSetConverter.getBuilding(resultSet);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return building;
-    }
-
-    public Building getLastAddedBuilding() {
-        Building building = new Building();
-        try (Connection connection = ConnectionService.createConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(PreparedQuery.GET_LAST_ADDED_BUILDING)) {
-            ResultSet resultSet = preparedStatement.executeQuery();
-            building = ResultSetConverter.getBuilding(resultSet);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -201,5 +192,66 @@ public class ReportDAO {
         result.add("");
 
         return result;
+    }
+
+    public List<Maintenance> getListAllMaintenance() {
+        List<Maintenance> list = new ArrayList<>();
+        try (Connection connection = ConnectionService.createConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(PreparedQuery.SELECT_ALL_MAINTENANCE)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                list.add(ResultSetConverter.getMaintenance(resultSet));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public XYChart.Series getSeries(String year, String quarter) {
+        XYChart.Series series = new XYChart.Series();
+
+        List<Maintenance> maintenances = getListAllMaintenance();
+        String startDate = "", endDate = "";
+        if (quarter.equalsIgnoreCase("spring")) {
+            startDate = "-01-01";
+            endDate = "-03-30";
+        } else if (quarter.equalsIgnoreCase("summer")) {
+            startDate = "-04-01";
+            endDate = "-06-30";
+        } else if (quarter.equalsIgnoreCase("autumn")) {
+            startDate = "-07-01";
+            endDate = "-09-30";
+        } else if (quarter.equalsIgnoreCase("winter")) {
+            startDate = "-10-01";
+            endDate = "-12-31";
+        }
+        startDate = year + startDate;
+        endDate = year + endDate;
+
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            Date start = ft.parse(startDate);
+            Date end = ft.parse(endDate);
+            while (start.before(end)) {
+                int count = 0;
+                for (Maintenance maintenance : maintenances) {
+                    if (ft.parse(maintenance.getStartDate()).before(start)
+                            && (maintenance.getResolutionDate().isEmpty() || ft.parse(maintenance.getResolutionDate()).after(start))) {
+                        count++;
+                    }
+                }
+                series.getData().add(new XYChart.Data(ft.format(start), count));
+                Calendar calendar = new GregorianCalendar();
+                calendar.setTime(start);
+                calendar.add(Calendar.DATE,1);
+                start = calendar.getTime();
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return series;
     }
 }

@@ -17,6 +17,7 @@ public interface UiConstants {
         String MAINTENANCE_ADD_NEW_TITTLE = "Add maintenance";
 
         String REPORT_SUBMIT_TITTLE = "report to submit";
+        String REPORT_UNDO_TITTLE = "report of undo maintenance";
     }
 
     interface Dialogs {
@@ -38,5 +39,6 @@ public interface UiConstants {
         String MAINTENANCE_ADD_NEW_PATH = "fxml/maintenance/maintenance_add_new_view.fxml";
 
         String REPORT_SUBMIT_PATH = "fxml/report/report_submit.fxml";
+        String REPORT_UNDO_PATH = "fxml/report/report_undo_maintenance.fxml";
     }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="900.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.report.ReportUndoMaintenanceController">
+    <children>
+        <Pane prefHeight="900.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <LineChart fx:id="linechart" layoutX="20.0" layoutY="194.0" prefHeight="416.0" prefWidth="1222.0" title="Undo Maintenance">
+                    <xAxis>
+                        <CategoryAxis label="Date in this quarter" fx:id="xAxis" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="yAxis" label="Num of Undo maintenance" side="LEFT"/>
+                    </yAxis>
+                </LineChart>
+                <GridPane layoutX="254.0" layoutY="87.0" prefHeight="150.0" prefWidth="771.0">
+                    <children>
+                        <Label text="Quarter:" GridPane.columnIndex="0">
+                        </Label>
+                        <Label text="Year:" GridPane.columnIndex="2">
+                        </Label>
+                        <TextField fx:id="quarter" GridPane.columnIndex="1"/>
+                        <TextField fx:id="year" GridPane.columnIndex="3" />
+                    </children>
+                </GridPane>
+<!--                <Label text="Undo Maintenance Summary">-->
+<!--                    <font>-->
+<!--                        <Font size="50.0" />-->
+<!--                    </font>-->
+<!--                </Label>-->
+<!--                <TextArea editable="false" layoutX="190.0" layoutY="638.0"-->
+<!--                          prefHeight="160.0" prefWidth="900.0" promptText="&#45;&#45;&#45;&#45;&#45;&#45;Warning log-&#45;&#45;&#45;&#45;&#45;&#45; " wrapText="true"/>-->
+                <Button fx:id="btnPlot" layoutX="540.0" layoutY="808.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="200.0" text="Plot"/>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
