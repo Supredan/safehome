@@ -31,6 +31,9 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
         </TableView>
+        <Button fx:id="btnReportSubmit" minHeight="25.0" minWidth="88.0"
+                mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Generate Report"
+                AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"/>
         <Button fx:id="btnDeleteBuilding" minHeight="25.0" minWidth="102.0" mnemonicParsing="false" text="DEL"
                 textFill="RED" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0"/>
         <Button fx:id="btnEditBuilding" minHeight="25.0" minWidth="94.0" mnemonicParsing="false" text="EDIT"

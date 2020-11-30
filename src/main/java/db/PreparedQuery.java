@@ -1,32 +1,6 @@
 package db;
 
 public class PreparedQuery {
-
-    static final String INSERT_STUDENT = "INSERT INTO Student (name,surname,middle_name,passport_data,registration_date," +
-            "blacklist_date) VALUES (?,?,?,?,?,?)";
-    static final String DELETE_STUDENT_BY_ID = "DELETE FROM Student WHERE id=?";
-    static final String UPDATE_STUDENT_BY_ID = "UPDATE Student SET name=?,surname=?,middle_name=?,passport_data=? WHERE id=?";
-    static final String SELECT_STUDENT_BY_ID = "SELECT * FROM Student WHERE id=?";
-    static final String SELECT_STUDENTS = "SELECT * FROM Student WHERE blacklist=?";
-    static final String ADD_STUDENT_TO_BLACKLIST_BY_ID = "UPDATE Student SET blacklist=1,blacklist_date=? WHERE id=?";
-    static final String DELETE_STUDENT_FROM_BLACKLIST_BY_ID = "UPDATE Student SET blacklist=0,blacklist_date=? WHERE id=?";
-    static final String SELECT_BOOKS_BY_STUDENT = "SELECT * from Book b INNER JOIN Student_books sb on b.id=sb.book_id and sb.student_id=?";
-    static final String GET_LAST_ADDED_STUDENT = "SELECT * from Student WHERE id = (SELECT MAX(ID)  FROM Student)";
-
-
-    static final String INSERT_BOOK = "INSERT INTO Book(title,author,edition,year_of_publication,date_of_give,date_of_take)" +
-            "VALUES (?,?,?,?,'','')";
-    static final String DELETE_BOOK_BY_ID = "DELETE FROM Book WHERE id=?";
-    static final String UPDATE_BOOK_BY_ID = "UPDATE Book SET title=?,author=?,edition=?,year_of_publication=? WHERE id=?";
-    static final String DELETE_FROM_STUDENT_BOOKS_BY_ID = "DELETE FROM Student_books WHERE book_id=?";
-    static final String SELECT_BOOK_BY_ID = "SELECT * FROM Book WHERE id=?";
-    static final String SELECT_ALL_BOOKS = "SELECT * FROM Book";
-    static final String SELECT_AVAILABLE_BOOKS = "SELECT * FROM Book WHERE available=1";
-    static final String SELECT_NOT_AVAILABLE_BOOKS = "SELECT * FROM Book b INNER JOIN Student_books sb  on b.id=sb.book_id";
-    static final String INSERT_INTO_STUDENT_BOOKS = "INSERT INTO Student_books(student_id,book_id) VALUES (?,?)";
-    static final String SET_BOOK_AVAILABLE_BY_ID = "UPDATE Book SET available=?,date_of_give=?,date_of_take=? WHERE id=?";
-    static final String GET_LAST_ADDED_BOOK = "SELECT * from Book WHERE id = (SELECT MAX(ID)  FROM Book)";
-
     static final String INSERT_BUILDING = "INSERT INTO Building(Street, City, State, Zipcode, Phone, EmpNo)" +
             "VALUES (?,?,?,?,?,?)";
     static final String UPDATE_BUILDING_BY_ID = "UPDATE Building SET Street=?,City=?,State=?,Zipcode=?,Phone=?,EmpNo=? WHERE id=?";
@@ -54,4 +28,11 @@ public class PreparedQuery {
     static final String DELETE_MAINTENANCE_BY_ID = "DELETE FROM Maintenance WHERE id=?";
     static final String SELECT_MAINTENANCE_BY_ID = "SELECT * FROM Maintenance WHERE id=?";
     static final String GET_LAST_ADDED_MAINTENANCE = "SELECT * from Maintenance WHERE id = (SELECT MAX(id)  FROM Maintenance)";
+
+    static final String GET_APARTMENT_NUM_OF_BUILDING = "SELECT COUNT(*) from Apartment WHERE BuildingNo = ?";
+    static final String GET_APARTMENT_OCCUPIED = "SELECT COUNT(DISTINCT ApartmentNo) from Client INNER JOIN Apartment WHERE BuildingNo = ?";
+    static final String GET_CHANGING_TENANTS = "SELECT COUNT(*) from Client INNER JOIN Apartment WHERE BuildingNo = ? and (date(EndDate) BETWEEN ? AND ? or date(StartDate) BETWEEN ? AND ?)";
+    static final String GET_TOTAL_REVENUE = "SELECT SUM(AmountPaid) FROM Client INNER JOIN Apartment WHERE BuildingNo = ? and PaymentDate BETWEEN ? AND ?";
+    static final String GET_MAINTENANCE_EXPENSES = "SELECT SUM(BuildingExpense) FROM Maintenance INNER JOIN Apartment WHERE BuildingNo = ? and ResolutionDate BETWEEN ? AND ?";
+    static final String GET_WAGES = "SELECT SUM(MonthlySalary) FROM Employee WHERE BuildingNo = ?";
 }

@@ -22,7 +22,7 @@ public class BuildingController extends BaseTableController<Building> implements
     @FXML
     private TableColumn<Building, String> tfBuildingNo, tfStreet, tfCity, tfState, tfZipcode, tfPhone, tfEmpNo;
     @FXML
-    private Button btnDeleteBuilding, btnEditBuilding, btnAddNewBuilding;
+    private Button btnDeleteBuilding, btnEditBuilding, btnAddNewBuilding, btnReportSubmit;
 
     @Override
     public TableView<Building> getTableView() {
@@ -96,6 +96,10 @@ public class BuildingController extends BaseTableController<Building> implements
 
         btnAddNewBuilding.setOnAction(event -> {
             ViewUtil.showView(UiConstants.Path.BUILDING_ADD_NEW_PATH, UiConstants.Tittle.BUILDING_ADD_NEW_TITTLE, false);
+        });
+
+        btnReportSubmit.setOnAction(event -> {
+            ViewUtil.showView(UiConstants.Path.REPORT_SUBMIT_PATH, UiConstants.Tittle.REPORT_SUBMIT_TITTLE, false);
         });
     }
 }
